@@ -1,8 +1,9 @@
 use std::fs;
 
 fn load_from_file(file_path: &str) -> Vec<i8>{
-	let file_contents = fs::read_to_string(file_path).unwrap().replace('\n', "");
+	let file_contents = fs::read_to_string(file_path).unwrap().replace('\n', "").replace('\r', "");
 	let number_strings = file_contents.split(",").collect::<Vec<&str>>();
+	println!("{:?}", number_strings);
 	let numbers = number_strings.iter().map(|&nstr| nstr.parse::<i8>().unwrap()).collect::<Vec<i8>>();
 	//println!("{:?}", numbers);
 	//.parse().unwrap();
